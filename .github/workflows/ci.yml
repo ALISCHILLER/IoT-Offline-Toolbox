@@ -65,7 +65,7 @@ jobs:
         run: ./gradlew :composeApp:compileKotlinDesktop :composeApp:desktopTest --stacktrace
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: desktop-test-reports
           path: composeApp/build/reports/tests/
@@ -97,7 +97,7 @@ jobs:
           --stacktrace
       - name: Upload Android artifacts and reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: android-build-and-reports
           path: |
@@ -130,7 +130,7 @@ jobs:
           --stacktrace
       - name: Upload browser distributions and reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: web-distributions-and-reports
           path: |
@@ -158,7 +158,7 @@ jobs:
           --stacktrace
       - name: Upload iOS framework and test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ios-framework-and-reports
           path: |
