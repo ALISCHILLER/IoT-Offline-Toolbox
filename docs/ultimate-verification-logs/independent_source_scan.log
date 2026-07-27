@@ -1,0 +1,25 @@
+Independent source scan
+========================================================================
+Kotlin files: 78
+Production Kotlin files: 62
+Test Kotlin files: 16
+Kotlin lines: 16636
+@Test annotations: 160
+Missing Kotlin packages: 0
+Packages outside com.msa: 0
+TODO(): 0
+Not implemented error: 0
+GlobalScope: 0
+Thread.sleep in production: 0
+runBlocking in production: 0
+non-null assertion in production: 0
+Sensitive files present: 0
+English resources: 704
+Persian resources: 704
+Resource key symmetric difference: 0
+Placeholder mismatches: 0
+Unique expect declarations: 4
+Expect names without any actual implementation: 0
+Foreign email identities in authoritative docs: 0
+Independent scan errors: 0
+INDEPENDENT_SOURCE_SCAN_PASSED

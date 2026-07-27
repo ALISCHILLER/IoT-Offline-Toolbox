@@ -1,0 +1,63 @@
+IoT Offline Toolbox 3.6.2 - UI quality audit
+Date: 2026-07-18
+
+UI quality audit
+================================================================================
+Light scheme       onPrimary              on primary                   6.41:1  #FFFFFF/#006C55
+Light scheme       onPrimaryContainer     on primaryContainer         13.17:1  #002019/#9CF2D5
+Light scheme       onSecondary            on secondary                 6.47:1  #FFFFFF/#35618D
+Light scheme       onSecondaryContainer   on secondaryContainer       13.36:1  #001C38/#D4E4FF
+Light scheme       onTertiary             on tertiary                  6.39:1  #FFFFFF/#8A5200
+Light scheme       onTertiaryContainer    on tertiaryContainer        13.33:1  #2C1600/#FFDDB8
+Light scheme       onBackground           on background               16.29:1  #171D1A/#F7FAF8
+Light scheme       onSurface              on surface                  16.29:1  #171D1A/#F7FAF8
+Light scheme       onSurfaceVariant       on surfaceVariant            7.26:1  #3F4945/#DCE5E0
+Light scheme       onSurface              on surfaceContainerLowest   17.11:1  #171D1A/#FFFFFF
+Light scheme       onSurface              on surfaceContainerLow      15.55:1  #171D1A/#F1F5F2
+Light scheme       onSurface              on surfaceContainer         14.75:1  #171D1A/#EBEFED
+Light scheme       onSurface              on surfaceContainerHigh     13.97:1  #171D1A/#E5E9E7
+Light scheme       onSurface              on surfaceContainerHighest  13.05:1  #171D1A/#DDE2DF
+Light scheme       onError                on error                     6.46:1  #FFFFFF/#BA1A1A
+Light scheme       onErrorContainer       on errorContainer           13.26:1  #410002/#FFDAD6
+Dark scheme        onPrimary              on primary                  10.00:1  #00382C/#9AF2D4
+Dark scheme        onPrimaryContainer     on primaryContainer          8.18:1  #B8F7E0/#004D3D
+Dark scheme        onSecondary            on secondary                 7.58:1  #063258/#A6C8F2
+Dark scheme        onSecondaryContainer   on secondaryContainer        7.14:1  #D4E4FF/#244A70
+Dark scheme        onTertiary             on tertiary                  7.73:1  #4A2800/#FFB86B
+Dark scheme        onTertiaryContainer    on tertiaryContainer         7.33:1  #FFDDB8/#673C00
+Dark scheme        onBackground           on background               14.32:1  #DEE4E0/#0F1513
+Dark scheme        onSurface              on surface                  14.32:1  #DEE4E0/#0F1513
+Dark scheme        onSurfaceVariant       on surfaceVariant            5.49:1  #BFC9C3/#3F4945
+Dark scheme        onSurface              on surfaceContainerLowest   14.98:1  #DEE4E0/#0A0F0D
+Dark scheme        onSurface              on surfaceContainerLow      13.27:1  #DEE4E0/#171D1A
+Dark scheme        onSurface              on surfaceContainer         12.69:1  #DEE4E0/#1B211E
+Dark scheme        onSurface              on surfaceContainerHigh     11.19:1  #DEE4E0/#252B28
+Dark scheme        onSurface              on surfaceContainerHighest   9.57:1  #DEE4E0/#303633
+Dark scheme        onError                on error                     7.72:1  #690005/#FFB4AB
+Dark scheme        onErrorContainer       on errorContainer            7.24:1  #FFDAD6/#93000A
+Light UI tokens    onSuccess              on success                   6.46:1  #FFFFFF/#006D3B
+Light UI tokens    onSuccessContainer     on successContainer         13.30:1  #00210D/#9BF6B9
+Light UI tokens    onWarning              on warning                   6.46:1  #FFFFFF/#805600
+Light UI tokens    onWarningContainer     on warningContainer         13.21:1  #281900/#FFDEA5
+Light UI tokens    onInfo                 on info                      6.90:1  #FFFFFF/#265D8F
+Light UI tokens    onInfoContainer        on infoContainer            13.22:1  #001D35/#D0E4FF
+Dark UI tokens     onSuccess              on success                   7.75:1  #00391B/#7ADB96
+Dark UI tokens     onSuccessContainer     on successContainer          7.31:1  #96F8B1/#005229
+Dark UI tokens     onWarning              on warning                   7.76:1  #442B00/#FFBA42
+Dark UI tokens     onWarningContainer     on warningContainer          7.25:1  #FFDEA5/#614000
+Dark UI tokens     onInfo                 on info                      7.64:1  #003258/#A2C9F5
+Dark UI tokens     onInfoContainer        on infoContainer             7.17:1  #D0E4FF/#164A73
+SOURCE CONTRACT     PASS  SnackbarHost is used for non-blocking feedback
+SOURCE CONTRACT     PASS  safe-drawing insets are applied
+SOURCE CONTRACT     PASS  IME padding is applied
+SOURCE CONTRACT     PASS  drawer, rail and sidebar modes exist
+SOURCE CONTRACT     PASS  shared status banner exists
+SOURCE CONTRACT     PASS  shared selectable code surface exists
+SOURCE CONTRACT     PASS  shared non-interactive information pill exists
+SOURCE CONTRACT     PASS  no fake no-op AssistChip remains
+SOURCE CONTRACT     PASS  no raw screen Card bypasses the shared design system
+================================================================================
+Contrast pairs checked: 44
+Source contracts checked: 9
+Errors: 0
+UI_QUALITY_AUDIT_PASSED

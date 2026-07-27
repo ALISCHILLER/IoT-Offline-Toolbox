@@ -1,0 +1,15 @@
+.gradle/
+.kotlin/
+build/
+**/build/
+local.properties
+*.iml
+.idea/
+.DS_Store
+*.jks
+*.keystore
+keystore.properties
+.env
+node_modules/
+kotlin-js-store/
+composeApp/composeResources/

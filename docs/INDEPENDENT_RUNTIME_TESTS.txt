@@ -1,0 +1,44 @@
+IoT Offline Toolbox 3.6.2 - independent current-source execution evidence
+Date: 2026-07-18
+
+1. Core runtime harness
+Command:
+  bash tools/core_runtime_harness.sh
+Result:
+  FINAL_CORE_RUNTIME_HARNESS_PASSED
+Scope:
+  TransportSecurity, HeaderParser, IpTools, PayloadCodec/Base64Codec,
+  bounded payload tools, and SecretRedactor current sources.
+
+2. Protocol runtime harness
+Command:
+  bash tools/protocol_runtime_harness.sh
+Result:
+  PROTOCOL_RUNTIME_HARNESS_PASSED
+Scope:
+  MQTT, CoAP, DNS-SD, and SSDP current sources, including malformed,
+  overflow, canonical encoding, exact-boundary, and injection cases.
+
+3. Responsive runtime harness
+Command:
+  bash tools/responsive_runtime_harness.sh
+Result:
+  RESPONSIVE_LAYOUT_RUNTIME_HARNESS_PASSED
+Scope:
+  Current ResponsiveLayout policy across mobile portrait, phone landscape,
+  split-screen, tablet, sidebar boundary, short desktop, and ultra-wide.
+
+4. Actual Desktop network harness
+Command:
+  bash tools/desktop_network_runtime_harness.sh
+Result:
+  DESKTOP_NETWORK_RUNTIME_HARNESS_PASSED
+Scope:
+  Actual PlatformNetwork.desktop.kt against local TCP/UDP loopback servers;
+  verifies exact 1024-byte TCP response is not truncated, 1025-byte TCP is
+  truncated, and over-limit UDP is truncated.
+
+Limitations:
+- These are focused current-source harnesses, not Gradle target builds.
+- Android/iOS/browser runtime and physical-device protocols were not executed.
+- Full Gradle resolution was blocked before project configuration by DNS.

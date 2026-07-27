@@ -1,0 +1,35 @@
+Kotlin/Gradle files checked: 80
+XML files checked: 12
+TOML files checked: 1
+JSON files checked: 4
+YAML files checked: 2
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/network/HttpToolClient.kt: manual redirect hardening contract missing crossesOriginWithSecrets
+ERROR: docs/SOURCE_SHA256SUMS.txt: files missing from checksum manifest: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/network/NetworkValidation.kt, composeApp/src/commonTest/kotlin/com/msa/iotofflinetoolbox/core/network/NetworkValidationTest.kt, docs/final-verification-logs/core_harness.log, docs/final-verification-logs/deep_quality.log, docs/final-verification-logs/desktop_network_harness.log, docs/final-verification-logs/protocol_harness.log, docs/final-verification-logs/responsive_harness.log, docs/final-verification-logs/secret_harness.log
+ERROR: tools/core_runtime_harness.sh: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: tools/deep_quality_audit.py: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: tools/desktop_network_runtime_harness.sh: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: tools/secret_redactor_runtime_harness.sh: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: tools/ui_quality_audit.py: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/desktopMain/kotlin/com/msa/iotofflinetoolbox/core/network/PlatformNetwork.desktop.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonTest/kotlin/com/msa/iotofflinetoolbox/core/data/SecretRedactorTest.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonTest/kotlin/com/msa/iotofflinetoolbox/core/network/HttpRequestToolsTest.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonTest/kotlin/com/msa/iotofflinetoolbox/core/network/HttpToolClientTest.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonTest/kotlin/com/msa/iotofflinetoolbox/core/network/IpToolsTest.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonTest/kotlin/com/msa/iotofflinetoolbox/core/network/TransportSecurityTest.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/ui/components/CommonComponents.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/ui/screens/HttpScreen.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/ui/screens/NetworkToolsScreen.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/ui/screens/RealtimeScreen.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/data/SecretRedactor.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/network/HttpRequestTools.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/network/HttpToolClient.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/network/IpTools.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/network/RealtimeClients.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/network/TransportSecurity.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/kotlin/com/msa/iotofflinetoolbox/core/store/ToolboxStore.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/composeResources/values/strings.xml: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/commonMain/composeResources/values-fa/strings.xml: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+ERROR: composeApp/src/androidMain/kotlin/com/msa/iotofflinetoolbox/core/network/PlatformNetwork.android.kt: SHA-256 does not match docs/SOURCE_SHA256SUMS.txt
+Warnings: 0
+Errors: 27
+EXIT=1
