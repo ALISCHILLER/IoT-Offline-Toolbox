@@ -35,7 +35,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - uses: gradle/actions/wrapper-validation@v4
+      - uses: gradle/actions/wrapper-validation@v6
 
   dependency-review:
     name: Dependency review
@@ -60,7 +60,7 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - name: Compile Desktop and execute Desktop/common tests
         run: ./gradlew :composeApp:compileKotlinDesktop :composeApp:desktopTest --stacktrace
       - name: Upload test reports
@@ -85,7 +85,7 @@ jobs:
       - uses: android-actions/setup-android@v3
       - name: Install Android SDK 36
         run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - name: Build and verify Android variants
         run: >-
           ./gradlew
@@ -119,7 +119,7 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - name: Test and bundle browser targets
         run: >-
           ./gradlew
@@ -149,7 +149,7 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
       - name: Test iOS shared code and link release framework
         run: >-
           ./gradlew
