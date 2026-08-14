@@ -73,7 +73,7 @@ jobs:
         run: ./gradlew :composeApp:compileKotlinDesktop :composeApp:desktopTest --stacktrace
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: desktop-test-reports
           path: composeApp/build/reports/tests/
@@ -107,7 +107,7 @@ jobs:
           --stacktrace
       - name: Upload Android artifacts and reports
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: android-build-and-reports
           path: |
@@ -142,7 +142,7 @@ jobs:
           --stacktrace
       - name: Upload browser distributions and reports
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: web-distributions-and-reports
           path: |
@@ -172,7 +172,7 @@ jobs:
           --stacktrace
       - name: Upload iOS framework and test reports
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ios-framework-and-reports
           path: |
