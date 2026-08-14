@@ -1,0 +1,182 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.warning.mode=all
+
+jobs:
+  static-audit:
+    name: Static audit and repository hygiene
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Run dependency-free deterministic audit
+        run: bash tools/run_quality_checks.sh --audit
+
+  verify-wrapper:
+    name: Gradle wrapper validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: gradle/actions/wrapper-validation@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
+
+  dependency-review:
+    name: Dependency review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/dependency-review-action@2031cfc080254a8a887f58cffee85186f0e49e48 # v4
+        with:
+          fail-on-severity: high
+
+  desktop-and-common-tests:
+    name: Desktop compile and shared tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d7793b545071e98d581d3bf084a51c3213318a07 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
+      - name: Compile Desktop and execute Desktop/common tests
+        run: ./gradlew :composeApp:compileKotlinDesktop :composeApp:desktopTest --stacktrace
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: desktop-test-reports
+          path: composeApp/build/reports/tests/
+          if-no-files-found: warn
+          retention-days: 14
+
+  android:
+    name: Android shared host tests, debug, release and lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d7793b545071e98d581d3bf084a51c3213318a07 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+      - name: Install Android SDK 36
+        run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
+      - name: Build and verify Android variants
+        run: >-
+          ./gradlew
+          :composeApp:testAndroidHostTest
+          :androidApp:assembleDebug
+          :androidApp:assembleRelease
+          :androidApp:lintDebug
+          :androidApp:lintRelease
+          --stacktrace
+      - name: Upload Android artifacts and reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: android-build-and-reports
+          path: |
+            androidApp/build/outputs/apk/
+            androidApp/build/reports/
+            androidApp/build/test-results/
+            composeApp/build/reports/tests/testAndroidHostTest/
+            composeApp/build/test-results/testAndroidHostTest/
+          if-no-files-found: warn
+          retention-days: 14
+
+  web:
+    name: JavaScript and Wasm tests and production bundles
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d7793b545071e98d581d3bf084a51c3213318a07 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
+      - name: Test and bundle browser targets
+        run: >-
+          ./gradlew
+          :composeApp:jsBrowserTest
+          :composeApp:wasmJsBrowserTest
+          :composeApp:jsBrowserProductionWebpack
+          :composeApp:wasmJsBrowserProductionWebpack
+          --stacktrace
+      - name: Upload browser distributions and reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: web-distributions-and-reports
+          path: |
+            composeApp/build/dist/
+            composeApp/build/reports/tests/
+          if-no-files-found: warn
+          retention-days: 14
+
+  ios:
+    name: iOS simulator tests and release framework
+    runs-on: macos-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d7793b545071e98d581d3bf084a51c3213318a07 # v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
+      - name: Test iOS shared code and link release framework
+        run: >-
+          ./gradlew
+          :composeApp:iosSimulatorArm64Test
+          :composeApp:linkReleaseFrameworkIosSimulatorArm64
+          --stacktrace
+      - name: Upload iOS framework and test reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ios-framework-and-reports
+          path: |
+            composeApp/build/bin/iosSimulatorArm64/releaseFramework/
+            composeApp/build/reports/tests/
+          if-no-files-found: warn
+          retention-days: 14
