@@ -1,5 +1,5 @@
 [versions]
-agp = "9.1.0"
+agp = "9.4.1"
 kotlin = "2.4.10"
 composeMultiplatform = "1.11.1"
 composeLibraries = "1.11.1"
